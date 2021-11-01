@@ -28,4 +28,13 @@ public class Event implements AbstractEntity {
     @CreationTimestamp
     @Column(updatable = false)
     private OffsetDateTime createdAt;
+
+    public Event(Long id, LocalDateTime dateTime, String description) {
+        this.id = id;
+        this.dateTime = dateTime;
+        this.description = description;
+    }
+
+    public Event() {
+    }
 }

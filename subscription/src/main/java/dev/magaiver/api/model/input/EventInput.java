@@ -15,6 +15,6 @@ public class EventInput {
     private String description;
 
     public Event assembler() {
-        return new Event();
+        return new Event(this.getId(), this.getDateTime(), this.getDescription());
     }
 }
