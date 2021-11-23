@@ -9,6 +9,8 @@
         <module>certificate</module>
         <module>mail</module>
         <module>core</module>
+        <module>auth</module>
+        <module>token</module>
     </modules>
 
     <parent>
