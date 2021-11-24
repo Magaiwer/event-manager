@@ -52,7 +52,7 @@ public class TokenProvider implements Serializable {
         return signedJWT.serialize();
     }
 
-    public Boolean validateToken(String token) {
+    public boolean validateToken(String token) {
         log.info("validate token");
         return !isTokenExpired(token);
     }
@@ -103,7 +103,7 @@ public class TokenProvider implements Serializable {
         return SignedJWT.parse(token).getJWTClaimsSet();
     }
 
-    private Boolean isTokenExpired(String token) {
+    private boolean isTokenExpired(String token) {
         final Date expiration = getExpirationDateFromToken(token);
         return expiration.before(new Date());
     }

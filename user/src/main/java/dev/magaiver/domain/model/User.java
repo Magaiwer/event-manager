@@ -14,6 +14,7 @@ import java.time.OffsetDateTime;
 @EqualsAndHashCode(of = {"id"})
 @ToString
 @DynamicUpdate
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

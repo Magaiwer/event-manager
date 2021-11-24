@@ -1,9 +1,8 @@
 package dev.magaiver.security.filter;
 
-import dev.magaiver.domain.model.User;
+import dev.magaiver.property.JwtConfiguration;
 import dev.magaiver.security.UserDetail;
 import dev.magaiver.security.jwt.TokenProvider;
-import dev.magaiver.property.JwtConfiguration;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -41,7 +39,6 @@ public class AuthorizationFilter extends OncePerRequestFilter {
 
         String decryptedToken = getToken(header);
         tokenProvider.validateTokenSignature(decryptedToken);
-
 
         if (!tokenProvider.validateToken(decryptedToken)) {
             log.error("Token expired");

@@ -1,10 +1,10 @@
 package dev.magaiver.config;
 
 
-import dev.magaiver.security.jwt.TokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.web.cors.CorsConfiguration;
@@ -15,6 +15,7 @@ import static javax.servlet.http.HttpServletResponse.SC_UNAUTHORIZED;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@Order(1)
 public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
 
     private static final String[] WHITELIST = {
@@ -23,7 +24,7 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
             "/swagger-resources/**",
             "/swagger-ui/**",
             "/actuator/prometheus/**", // only devel and test
-            "/login/"
+            "/auth/login/"
     };
 
 
@@ -31,6 +32,8 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .sessionManagement().sessionCreationPolicy(STATELESS)
+                .and()
+                .headers().frameOptions().sameOrigin()
                 .and()
                 .cors()
                 .and()

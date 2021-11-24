@@ -7,18 +7,18 @@ import dev.magaiver.security.filter.AuthorizationFilter;
 import dev.magaiver.security.jwt.TokenProvider;
 import dev.magaiver.service.CustomUserDetailServiceImpl;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
-
-import java.util.Collections;
 
 
 @EnableWebSecurity
+@Order(2)
 public class SecurityAuthConfig extends SecurityTokenConfig {
     private final CustomUserDetailServiceImpl customUserDetailService;
     private final JwtConfiguration jwtConfiguration;
@@ -39,6 +39,7 @@ public class SecurityAuthConfig extends SecurityTokenConfig {
     protected void configure(HttpSecurity http) throws Exception {
         http.addFilter(new AuthenticationFilter(authenticationManager(), tokenProvider, jwtConfiguration));
         http.addFilterAfter(new AuthorizationFilter(jwtConfiguration, tokenProvider), UsernamePasswordAuthenticationFilter.class);
+        super.configure(http);
     }
 
     @Bean
@@ -46,14 +47,4 @@ public class SecurityAuthConfig extends SecurityTokenConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    public CorsConfiguration corsConfiguration() {
-        CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowCredentials(true);
-        corsConfiguration.addAllowedHeader("*");
-        corsConfiguration.addAllowedMethod("*");
-        corsConfiguration.setMaxAge(3600L);
-        corsConfiguration.setAllowedOrigins(Collections.singletonList("*"));
-        return corsConfiguration;
-    }
 }

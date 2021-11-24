@@ -37,12 +37,6 @@
             <artifactId>core</artifactId>
             <version>${project.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>dev.magaiver</groupId>
-            <artifactId>user</artifactId>
-            <version>${project.version}</version>
-        </dependency>
     </dependencies>
 
 
