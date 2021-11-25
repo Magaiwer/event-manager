@@ -45,11 +45,11 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         log.info("Authentication was successful for the user '{}' ", authResult.getName());
         String token = jwtConfiguration.getType().equals("signed") ? tokenProvider.generateSignedToken(authResult) : tokenProvider.generateEncryptedToken(authResult);
         response.addHeader("Access-Control-Expose-Headers", "XSRF-TOKEN, " + jwtConfiguration.getHeaderName());
-        response.addHeader( jwtConfiguration.getHeaderName(), jwtConfiguration.getHeaderValue() + token);
+        response.addHeader(jwtConfiguration.getHeaderName(), jwtConfiguration.getHeaderValue() + token);
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-        response.getWriter().write("{ \"token\": \""+ token +"\"}");
+        response.getWriter().write("{ \"token\": \"" + token + "\"}");
         response.getWriter().flush();
 
     }

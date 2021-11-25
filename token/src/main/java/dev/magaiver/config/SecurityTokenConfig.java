@@ -15,7 +15,7 @@ import static javax.servlet.http.HttpServletResponse.SC_UNAUTHORIZED;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-@Order(1)
+@Order(2)
 public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
 
     private static final String[] WHITELIST = {
