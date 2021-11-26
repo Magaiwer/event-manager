@@ -1,5 +1,3 @@
-
-
 server:
   port: 5003
 
@@ -10,12 +8,21 @@ spring:
     password: postgres
     hikari:
       maximum-pool-size: 2
+    driver-class-name: org.postgresql.Driver
   jpa:
-    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    properties:
+      hibernate:
+        formatSql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
     hibernate:
       ddl-auto: update
+    show-sql: true
   application:
     name: user-service
+
 
 eureka:
   instance:
@@ -24,4 +31,4 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://localhost:5004/eureka/
+      defaultZone: http://localhost:5004/eureka

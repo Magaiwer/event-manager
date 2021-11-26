@@ -1,5 +1,6 @@
 package dev.magaiver.domain.model;
 
+import dev.magaiver.user.domain.model.User;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
