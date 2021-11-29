@@ -1,2 +1,33 @@
 server:
   port: 5002
+spring:
+  application:
+    name: subscription
+
+  data:
+    mongodb:
+      authentication-database: admin
+      password: root
+      host: localhost
+      database: subscription
+      uri: mongodb://root:root@localhost:27017/? authSource=admin
+  main:
+    allow-bean-definition-overriding: true
+
+  jpa:
+    properties:
+      hibernate:
+        formatSql: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:5004/eureka

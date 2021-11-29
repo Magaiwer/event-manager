@@ -18,3 +18,6 @@ eureka:
 zuul:
   sensitive-headers: Cookie
 
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000

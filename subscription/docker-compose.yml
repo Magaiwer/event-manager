@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+  db-mongo:
+    image: mongo
+    container_name: db-mongo
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_DATABASE: subscription
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    volumes:
+      - mongo-data:/data/db/
+      - mongo-log:/var/log/mongodb/
+    networks:
+      - mongo-network
+
+  mongo-express:
+    image: mongo-express
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: root
+      ME_CONFIG_MONGODB_URL: mongodb://root:root@db-mongo:27017/
+    networks:
+      - mongo-network
+
+networks:
+  mongo-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
+    external: true
+  mongo-log:
+    external: true
