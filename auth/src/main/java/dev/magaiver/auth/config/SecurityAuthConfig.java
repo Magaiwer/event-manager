@@ -32,6 +32,7 @@ public class SecurityAuthConfig extends SecurityTokenConfig {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.headers().frameOptions().sameOrigin().and().cors();
         http.addFilter(new AuthenticationFilter(authenticationManager(), tokenProvider, jwtConfiguration));
         http.addFilterAfter(new AuthorizationFilter(jwtConfiguration, tokenProvider), UsernamePasswordAuthenticationFilter.class);
         super.configure(http);

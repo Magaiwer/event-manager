@@ -3,6 +3,7 @@ package dev.magaiver.subscription.api.model.output;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.magaiver.subscription.domain.model.Event;
 import dev.magaiver.subscription.domain.model.Subscription;
+import dev.magaiver.subscription.domain.model.SubscriptionStatus;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,13 +21,13 @@ public class SubscriptionOutput {
     @JsonProperty("event")
     private EventOutput eventOutput;
     private String userEmail;
-    private boolean enabled;
+    private SubscriptionStatus status;
 
     public SubscriptionOutput disassembler(Subscription subscription) {
         this.setId(subscription.getId());
         this.setEventOutput(new EventOutput().disassembler(subscription.getEvent()));
         this.setUserEmail(subscription.getUserEmail());
-        this.setEnabled(subscription.isEnabled());
+        this.setStatus(subscription.getStatus());
         return this;
     }
 

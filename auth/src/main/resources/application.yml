@@ -23,11 +23,12 @@ spring:
     show-sql: true
 
   application:
-    name: auth-service
+    name: auth
 
   jwt:
     config:
-      expiration-time-m-s: 36000
+      expiration-time-m-s: 360000
+      type: signed
 
 eureka:
   instance:

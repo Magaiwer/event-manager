@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Data
@@ -43,5 +44,10 @@ public class Event implements AbstractEntity {
     }
 
     public Event() {
+    }
+
+    public String dateTimeStr() {
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        return this.dateTime.format(df);
     }
 }

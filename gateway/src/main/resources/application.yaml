@@ -1,6 +1,7 @@
 spring:
   application:
     name: gateway
+
 server:
   port: 5005
   servlet:
@@ -21,3 +22,12 @@ zuul:
 ribbon:
   ReadTimeout: 10000
   ConnectTimeout: 10000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /portal-admin
+      cors:
+        allowed-origins: "*"

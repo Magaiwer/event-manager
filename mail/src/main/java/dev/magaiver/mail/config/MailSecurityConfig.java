@@ -1,4 +1,4 @@
-package dev.magaiver.subscription.config;
+package dev.magaiver.mail.config;
 
 import dev.magaiver.token.config.SecurityTokenConfig;
 import dev.magaiver.token.property.JwtConfiguration;
@@ -12,14 +12,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 /**
  * @author Magaiver Santos
  */
-
 @Configuration
 @Order
-public class SecurityEventConfig extends SecurityTokenConfig {
+public class MailSecurityConfig extends SecurityTokenConfig {
     private final JwtConfiguration jwtConfiguration;
     private final TokenProvider tokenProvider;
 
-    public SecurityEventConfig(JwtConfiguration jwtConfiguration, TokenProvider tokenProvider) {
+    public MailSecurityConfig(JwtConfiguration jwtConfiguration, TokenProvider tokenProvider) {
         this.jwtConfiguration = jwtConfiguration;
         this.tokenProvider = tokenProvider;
     }

@@ -17,7 +17,7 @@ public class JwtConfiguration implements Serializable {
     private String loginUrl = "/login/**";
     private int expirationTimeMS = 3600;
     private String privateKey = "qxBEEQv7E8aviX1KUcdOiF5ve5COUPAr";
-    private String type = "encrypted";
+    private String type = "signed"; //"encrypted";
     private String headerName = "Authorization";
     private String headerValue =  "Bearer ";
 

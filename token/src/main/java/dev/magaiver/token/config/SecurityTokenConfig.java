@@ -25,7 +25,7 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
             "/v2/api-docs/**",
             "/swagger-resources/**",
             "/swagger-ui/**",
-            "/actuator/prometheus/**", // only devel and test
+            "/actuator/**", // only devel and test
             "/auth/login/"
     };
 

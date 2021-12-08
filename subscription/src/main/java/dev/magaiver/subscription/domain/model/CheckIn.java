@@ -1,6 +1,5 @@
 package dev.magaiver.subscription.domain.model;
 
-import dev.magaiver.user.domain.model.User;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -18,11 +17,13 @@ public class CheckIn implements AbstractEntity {
     @Id
     private String id;
     private Event event;
-    private User user;
+    private String userEmail;
     @CreationTimestamp
     private LocalDateTime dateTime;
 
-
-
-
+    public CheckIn(Event event, String userEmail) {
+        this.event = event;
+        this.userEmail = userEmail;
+        this.dateTime = LocalDateTime.now();
+    }
 }
