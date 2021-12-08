@@ -12,7 +12,7 @@
    [Descrição dos requisitos e escopo do projeto ](/resources/projeto-requisitos.pdf)   
 
 
-###Tecnologias:
+### Tecnologias:
 - Spring boot 2.1.3.RELEASE https://spring.io/guides/gs/spring-boot/
 - Java 11 LTS
 - Postgresql
