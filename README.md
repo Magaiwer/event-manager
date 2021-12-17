@@ -4,7 +4,7 @@
 
 [Frontend Angular](https://github.com/Magaiwer/event-manager-client) - event-manger-client
  
-[Aplicativo mobile ](https://github.com/Magaiwer/personal-manager-client) - event-checkin client mobile para realizar check In offline
+[Aplicativo mobile ](https://github.com/Magaiwer/event-checkin) - event-checkin client mobile para realizar check In offline
 
 ### Sistema de gerenciamento de inscrições em eventos utilizando conceitos de micro serviços 
 
